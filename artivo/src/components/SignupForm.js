@@ -2,6 +2,26 @@ import React, {  Component } from 'react';
 import '../App.css';
 
 import TextField from '@material-ui/core/TextField';
+import Select from '@material-ui/core/Select';
+import { MenuItem, FormControl, InputLabel, Input } from '@material-ui/core';
+
+const ITEM_HEIGHT = 48;
+
+const ITEM_PADDING_TOP = 8;
+
+const MenuProps = {
+    PaperProps: {
+        style: {
+            maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
+            width: 250,
+        },
+    },
+};
+
+const skills = [
+    "Art & Craft",
+    "Dancing"
+]
 
 class SignupForm extends Component {
     
@@ -9,7 +29,9 @@ class SignupForm extends Component {
         name: '',
         nickname: '',
         postalCode: '',
-        email: ''
+        email: '',
+        skillsToTeach: [],
+        skillsToLearn: []
     }
 
     handleChangeName(event) {
@@ -36,9 +58,24 @@ class SignupForm extends Component {
         })
     }
 
+    handleChangeSkillsToT(event) {
+        this.setState({ skillsToTeach: event.target.value });
+    };
+
+    handleChangeSkillsToL(event) {
+        this.setState({ skillsToLearn: event.target.value });
+    };
+
     render() {
 
-        const { name, nickname, postalCode, email } = this.state;
+        const { 
+            name, 
+            nickname, 
+            postalCode, 
+            email, 
+            skillsToTeach,
+            skillsToLearn
+        } = this.state;
 
         return (
             <div className="signup-form-div">
@@ -79,6 +116,56 @@ class SignupForm extends Component {
                         type="email"
                         required
                     />
+                    <br />
+                    <FormControl>
+                        <InputLabel
+                            htmlFor="skills-to-teach-select"
+                        >
+                        Skills to Teach
+                        </InputLabel>
+                        <Select 
+                            multiple 
+                            value={skillsToTeach}
+                            input={<Input id="skills-to-teach-select" />}
+                            MenuProps={MenuProps}
+                            style={{paddingLeft: '5em'}}
+                            onChange={event => this.handleChangeSkillsToT(event)}
+                        >
+                            {skills.map(skill => (
+                                <MenuItem
+                                    key={skills.indexOf(skill)}
+                                    value={skill}
+                                >
+                                    {skill}
+                                </MenuItem>
+                            ))}
+                        </Select>
+                    </FormControl>
+                    <br />
+                    <FormControl>
+                        <InputLabel
+                            htmlFor="skills-to-learn-select"
+                        >
+                        Skills to Learn
+                        </InputLabel>
+                        <Select 
+                            multiple 
+                            value={skillsToLearn}
+                            input={<Input id="skills-to-learn-select" />}
+                            MenuProps={MenuProps}
+                            style={{paddingLeft: '5em'}}
+                            onChange={event => this.handleChangeSkillsToL(event)}
+                        >
+                            {skills.map(skill => (
+                                <MenuItem
+                                    key={skills.indexOf(skill)}
+                                    value={skill}
+                                >
+                                    {skill}
+                                </MenuItem>
+                            ))}
+                        </Select>
+                    </FormControl>
                 </form>
             </div>
         );

@@ -11,7 +11,7 @@ class CustomizedNavBar extends Component {
                 <AppBar position="static" className="c-nav-bar">
                     <Toolbar>
                         <Typography variant="title" color="inherit">
-                            Artivo
+                            Teach2Learn
                         </Typography>
                     </Toolbar>
                 </AppBar>
