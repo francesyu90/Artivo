@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
 import './App.css';
 
-import { Grid } from '@material-ui/core/';
-
 import { Route } from 'react-router-dom';
 
 import CustomizedNavBar from './components/CustomizedNavBar';
-import SignupForm from './components/SignupForm';
+import SignupPage from './pages/SignupPage';
 
 class App extends Component {
 
@@ -23,18 +21,18 @@ class App extends Component {
     render() {
         return (
             <div className="App">
+
                 <CustomizedNavBar />
-                <Grid container className="app-body">
-                    <Grid item xs={4}>
-                    </Grid>
-                    <Grid item xs={8}>
-                        <Route 
-                            path="/signup" 
-                            render={() => <SignupForm addUserToList={this.addUserToList} />} 
-                        />
-                        # of Users: {this.state.userProfiles.length}
-                    </Grid>
-                </Grid>
+
+                <div className="app-body">
+
+                    <Route 
+                        path="/signup" 
+                        render={() => <SignupPage addUserToList={this.addUserToList} />} 
+                    />
+                    # of Users: {this.state.userProfiles.length}
+                    
+                </div>
             </div>
         );
     }
