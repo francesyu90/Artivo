@@ -6,6 +6,8 @@ import Select from '@material-ui/core/Select';
 import { MenuItem, FormControl, InputLabel, Input, Typography } from '@material-ui/core';
 import Button from '@material-ui/core/Button';
 
+import UserProfile from '../model/UserProfile';
+
 const ITEM_HEIGHT = 48;
 
 const ITEM_PADDING_TOP = 8;
@@ -77,6 +79,43 @@ class SignupForm extends Component {
             skillsToLearn: []
         })
     }
+
+    disableSubmitButton() {
+
+        const { 
+            name, 
+            postalCode, 
+            email, 
+            skillsToTeach,
+            skillsToLearn
+        } = this.state;
+
+
+        return (
+            name === '' ||
+            postalCode === '' ||
+            email === '' ||
+            skillsToLearn.length === 0 ||
+            skillsToTeach.length === 0
+        );
+    }
+
+    addUser(event) {
+
+        event.preventDefault();
+
+        const { 
+            name, 
+            nickname,
+            postalCode, 
+            email, 
+            skillsToTeach,
+            skillsToLearn
+        } = this.state;
+        
+        let userProfile = new UserProfile(name, nickname, postalCode, email, skillsToLearn, skillsToTeach);
+        console.log(userProfile);
+    } 
 
     render() {
 
@@ -197,6 +236,8 @@ class SignupForm extends Component {
                         color="primary" 
                         variant="outlined"
                         style={{marginLeft: '1em'}}
+                        onClick={event => this.addUser(event)}
+                        disabled={this.disableSubmitButton()}
                     >
                         Submit
                     </Button>
