@@ -4,6 +4,7 @@ import '../App.css';
 import TextField from '@material-ui/core/TextField';
 import Select from '@material-ui/core/Select';
 import { MenuItem, FormControl, InputLabel, Input } from '@material-ui/core';
+import Button from '@material-ui/core/Button';
 
 const ITEM_HEIGHT = 48;
 
@@ -31,7 +32,9 @@ class SignupForm extends Component {
         postalCode: '',
         email: '',
         skillsToTeach: [],
-        skillsToLearn: []
+        skillsToLearn: [],
+        closeT: true,
+        closeL: true
     }
 
     handleChangeName(event) {
@@ -65,6 +68,17 @@ class SignupForm extends Component {
     handleChangeSkillsToL(event) {
         this.setState({ skillsToLearn: event.target.value });
     };
+
+    resetFields() {
+        this.setState({
+            name: '',
+            nickname: '',
+            postalCode: '',
+            email: '',
+            skillsToTeach: [],
+            skillsToLearn: []
+        })
+    }
 
     render() {
 
@@ -166,6 +180,23 @@ class SignupForm extends Component {
                             ))}
                         </Select>
                     </FormControl>
+                    <br />
+                    <br />
+                    <br />
+                    <Button 
+                        color="secondary" 
+                        variant="outlined"
+                        onClick={this.resetFields.bind(this)}
+                    >
+                        Reset
+                    </Button>
+                    <Button 
+                        color="primary" 
+                        variant="outlined"
+                        style={{marginLeft: '1em'}}
+                    >
+                        Submit
+                    </Button>
                 </form>
             </div>
         );
