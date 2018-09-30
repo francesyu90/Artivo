@@ -32,9 +32,7 @@ class SignupForm extends Component {
         postalCode: '',
         email: '',
         skillsToTeach: [],
-        skillsToLearn: [],
-        closeT: true,
-        closeL: true
+        skillsToLearn: []
     }
 
     handleChangeName(event) {
@@ -103,15 +101,15 @@ class SignupForm extends Component {
                         autoFocus
                         required
                     />
-                    <br />
                     <TextField
                         id="nick-name"
                         label="Nickname"
                         value={nickname}
                         onChange={event => this.handleChangeNickname(event)}
                         margin="normal"
+                        style={{marginLeft: '1em'}}
                     />
-                    <br />
+                     <br />
                     <TextField
                         id="postal-code"
                         label="PostalCode"
@@ -120,7 +118,6 @@ class SignupForm extends Component {
                         margin="normal"
                         required
                     />
-                    <br />
                     <TextField
                         id="email"
                         label="Email"
@@ -129,6 +126,7 @@ class SignupForm extends Component {
                         margin="normal"
                         type="email"
                         required
+                        style={{marginLeft: '1em'}}
                     />
                     <br />
                     <FormControl>
@@ -187,6 +185,7 @@ class SignupForm extends Component {
                         color="secondary" 
                         variant="outlined"
                         onClick={this.resetFields.bind(this)}
+                        style={{marginLeft: '13em'}}
                     >
                         Reset
                     </Button>
