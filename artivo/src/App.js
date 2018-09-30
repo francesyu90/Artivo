@@ -9,6 +9,17 @@ import CustomizedNavBar from './components/CustomizedNavBar';
 import SignupForm from './components/SignupForm';
 
 class App extends Component {
+
+    state = {
+        userProfiles: []
+    }
+
+    addUserToList = (userProfile) => {
+        this.setState(oldState => ({
+            userProfiles: [...oldState.userProfiles, userProfile],
+        }));
+    }
+
     render() {
         return (
             <div className="App">
@@ -17,7 +28,11 @@ class App extends Component {
                     <Grid item xs={4}>
                     </Grid>
                     <Grid item xs={8}>
-                        <Route exact path="/signup" component={SignupForm}></Route>
+                        <Route 
+                            path="/signup" 
+                            render={() => <SignupForm addUserToList={this.addUserToList} />} 
+                        />
+                        # of Users: {this.state.userProfiles.length}
                     </Grid>
                 </Grid>
             </div>

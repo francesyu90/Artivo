@@ -102,8 +102,6 @@ class SignupForm extends Component {
 
     addUser(event) {
 
-        event.preventDefault();
-
         const { 
             name, 
             nickname,
@@ -114,7 +112,8 @@ class SignupForm extends Component {
         } = this.state;
         
         let userProfile = new UserProfile(name, nickname, postalCode, email, skillsToLearn, skillsToTeach);
-        console.log(userProfile);
+        
+        this.props.addUserToList(userProfile);
     } 
 
     render() {
