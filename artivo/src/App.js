@@ -30,8 +30,7 @@ class App extends Component {
                         path="/signup" 
                         render={() => <SignupPage addUserToList={this.addUserToList} />} 
                     />
-                    # of Users: {this.state.userProfiles.length}
-                    
+
                 </div>
             </div>
         );
