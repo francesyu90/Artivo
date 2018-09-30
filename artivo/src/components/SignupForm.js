@@ -3,7 +3,7 @@ import '../App.css';
 
 import TextField from '@material-ui/core/TextField';
 import Select from '@material-ui/core/Select';
-import { MenuItem, FormControl, InputLabel, Input } from '@material-ui/core';
+import { MenuItem, FormControl, InputLabel, Input, Typography } from '@material-ui/core';
 import Button from '@material-ui/core/Button';
 
 const ITEM_HEIGHT = 48;
@@ -92,6 +92,10 @@ class SignupForm extends Component {
         return (
             <div className="signup-form-div">
                 <form className="signup-form">
+                    <Typography variant="title">
+                        Sign Up
+                    </Typography>
+
                     <TextField
                         id="standard-name"
                         label="Name"
